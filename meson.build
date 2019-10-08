@@ -2,7 +2,7 @@ project('gason', ['cpp'],
     default_options : [ 'cpp_std=c++11' ]
 )
 
-args += [ '-fno-rtti', '-fno-exceptions' ]
+args = [ '-fno-rtti', '-fno-exceptions' ]
 sources = files([
     'src/gason.cpp'
 ])
@@ -13,7 +13,7 @@ headers = files([
 
 incdir = include_directories('src')
 
-gason = static_library('gason', sources, include_directories : incdir, install : true)
+gason = static_library('gason', sources, include_directories : incdir, cpp_args : args, install : true)
 gason_dep = declare_dependency(link_with : gason, include_directories : incdir)
 
 pkg = import('pkgconfig')
