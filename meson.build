@@ -1,12 +1,15 @@
 project('gason', ['cpp'],
-    default_options : [ 'cpp_std=c++11' ]
+    default_options : [ 
+        'cpp_std=c++11',
+        'cpp_eh=none'
+    ]
 )
 
 args = []
 if meson.get_compiler('cpp').get_id() == 'msvc'
-    args += [ '/GR-', '/EHsc-' ]
+    args += [ '/GR-' ]
 else
-    args += [ '-fno-rtti', '-fno-exceptions' ]
+    args += [ '-fno-rtti' ]
 endif
     
 sources = files([
